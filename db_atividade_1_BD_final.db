@@ -1,0 +1,169 @@
+--criando a tabela apostas
+
+CREATE TABLE apostas (
+    Clientes_id INTEGER PRIMARY KEY, -- id do cliente, sendo utilizada como chave primária
+    Data_acesso DATE, -- o dia que o jogador realizou as ações
+    Buyin NUMERIC, -- valor total apostado pelo jogador
+    Winning NUMERIC, -- o valor total ganho pelo jogador, quando negativo, o prejuízo total do jogador
+    Rake NUMERIC, -- lucro da empresa com esse jogador
+    Sexo TEXT, -- sexo do jogador, sendo m=mascluno e f=feminino
+    Data_nascimento DATE, -- ano, mês e dia de nascimento do jogador
+    Data_cadastro DATE, -- data e hora de quando o jogador realizou cadastro
+    Cidade TEXT, -- cidade onde mora o jogador
+    Sigla TEXT -- UF onde mora o jogador
+);
+
+-- Inserindo na tabela "apostas" os valores fictícios gerados através do Chat GPT utilizando o prompt:
+
+  --"Gere para mim 60 observações sobre apostas esportivas que possa ser lido no excel envolvendo as variáveis Data_acesso (dia que o jogador realizou as ações), Clientes_id (o id do cliente), Buyin (o valor total apostado pelo jogador), Winning (o valor total ganho pelo jogador, quando negativo, o prejuízo total do jogador), Rake (o lucro da empresa com esse jogador, que é a subtração entre Buyin menos Winning), Sexo (m=masculino e f=feminino), Data_nascimento (distribuida entre 1925 e 2023 de forma representativa), Data_cadastro, Cidade e Sigla, transformando o resultado em um conjunto de VALUES para serem inseridos em um tabela no SQLite utilizando a função INSERT INTO"
+
+INSERT INTO apostas (Data_acesso, Clientes_id, Buyin, Winning, Rake, Sexo, Data_nascimento, Data_cadastro, Cidade, Sigla)
+VALUES
+('2023-01-15', 1, 100.00, 50.00, 50.00, 'm', '1945-12-15', '2023-01-01', 'Nova Iorque', 'NY'), 
+('2023-02-18', 2, 75.00, -20.00, 95.00, 'f', '1960-08-20', '2023-02-15', 'Los Angeles', 'CA'), 
+('2023-03-22', 3, 50.00, 30.00, 20.00, 'm', '1975-06-10', '2023-03-05', 'Chicago', 'IL'), 
+('2023-04-11', 4, 200.00, -120.00, 320.00, 'm', '1990-04-30', '2023-04-10', 'Houston', 'TX'), 
+('2023-05-30', 5, 120.00, 60.00, 60.00, 'f', '2000-09-05', '2023-05-20', 'Phoenix', 'AZ'), 
+('2023-06-28', 6, 150.00, -80.00, 230.00, 'm', '2015-02-12', '2023-06-28', 'Filadélfia', 'PA'), 
+('2023-07-12', 7, 80.00, 40.00, 40.00, 'm', '1958-03-10', '2023-07-07', 'San Antonio', 'TX'), 
+('2023-08-02', 8, 90.00, -10.00, 100.00, 'f', '1940-11-25', '2023-08-12', 'San Diego', 'CA'), 
+('2023-09-19', 9, 110.00, 45.00, 65.00, 'm', '1982-07-15', '2023-09-09', 'Dallas', 'TX'), 
+('2023-10-30', 10, 300.00, -150.00, 450.00, 'f', '1970-01-30', '2023-10-25', 'San Jose', 'CA'), 
+('2023-11-14', 11, 65.00, 20.00, 45.00, 'm', '2005-03-28', '2023-11-01', 'Austin', 'TX'), 
+('2023-12-09', 12, 140.00, -60.00, 200.00, 'f', '1995-11-15', '2023-12-02', 'Jacksonville', 'FL'), 
+('2024-01-02', 13, 180.00, 90.00, 90.00, 'm', '1964-09-10', '2024-01-01', 'Indianapolis', 'IN'), 
+('2024-02-15', 14, 220.00, -110.00, 330.00, 'm', '1989-02-18', '2024-02-10', 'San Francisco', 'CA'), 
+('2024-03-28', 15, 95.00, 35.00, 60.00, 'f', '1975-08-22', '2024-03-15', 'Columbus', 'OH'), 
+('2024-04-18', 16, 125.00, -70.00, 195.00, 'm', '2000-04-05', '2024-04-12', 'Charlotte', 'NC'), 
+('2024-05-05', 17, 75.00, 25.00, 50.00, 'm', '2010-10-15', '2024-05-01', 'Fort Worth', 'TX'), 
+('2024-06-15', 18, 50.00, 30.00, 20.00, 'f', '1980-06-12', '2024-06-02', 'Detroit', 'MI'), 
+('2024-07-10', 19, 110.00, -40.00, 150.00, 'm', '1963-11-10', '2024-07-05', 'El Paso', 'TX'), 
+('2024-08-20', 20, 160.00, 80.00, 80.00, 'f', '1996-03-25', '2024-08-15', 'Memphis', 'TN'), 
+('2024-09-06', 21, 70.00, -30.00, 100.00, 'm', '1989-10-12', '2024-09-02', 'Seattle', 'WA'), 
+('2024-10-24', 22, 125.00, 60.00, 65.00, 'm', '1978-07-28', '2024-10-18', 'Denver', 'CO'), 
+('2024-11-19', 23, 140.00, -65.00, 205.00, 'f', '1990-04-23', '2024-11-10', 'Washington', 'DC'), 
+('2024-12-30', 24, 180.00, 90.00, 90.00, 'm', '2018-05-20', '2024-12-22', 'Boston', 'MA'), 
+('2025-01-07', 25, 85.00, 40.00, 45.00, 'm', '1965-06-08', '2025-01-05', 'Nashville', 'TN'), 
+('2025-02-18', 26, 95.00, -25.00, 120.00, 'f', '1998-02-28', '2025-02-15', 'Baltimore', 'MD'), 
+('2025-03-22', 27, 120.00, 60.00, 60.00, 'm', '2019-11-17', '2025-03-20', 'Louisville', 'KY'), 
+('2025-04-02', 28, 130.00, -45.00, 175.00, 'm', '1987-03-10', '2025-04-01', 'Albuquerque', 'NM'), 
+('2025-05-15', 29, 90.00, 30.00, 60.00, 'f', '1970-02-15', '2025-05-10', 'Oklahoma City', 'OK'), 
+('2025-06-28', 30, 110.00, -50.00, 160.00, 'm', '2010-07-05', '2025-06-25', 'Raleigh', 'NC'), 
+('2025-07-22', 31, 70.00, 20.00, 50.00, 'm', '1984-05-22', '2025-07-15', 'Tucson', 'AZ'), 
+('2025-08-30', 32, 120.00, -35.00, 155.00, 'f', '1995-09-12', '2025-08-20', 'Fresno', 'CA'), 
+('2025-09-11', 33, 150.00, 60.00, 90.00, 'm', '2002-02-08', '2025-09-10', 'Sacramento', 'CA'), 
+('2025-10-03', 34, 100.00, -45.00, 145.00, 'f', '1990-01-28', '2025-10-01', 'Kansas City', 'MO'), 
+('2025-11-18', 35, 85.00, 25.00, 60.00, 'm', '1972-03-18', '2025-11-15', 'Mesa', 'AZ'), 
+('2025-12-09', 36, 110.00, -40.00, 150.00, 'm', '2013-12-10', '2025-12-02', 'Virginia Beach', 'VA'), 
+('2026-01-25', 37, 120.00, 60.00, 60.00, 'f', '1996-07-25', '2026-01-20', 'Atlanta', 'GA'), 
+('2026-02-14', 38, 70.00, -25.00, 95.00, 'm', '1955-10-05', '2026-02-10', 'Raleigh', 'NC'), 
+('2026-03-05', 39, 90.00, 30.00, 60.00, 'm', '2005-03-28', '2026-03-01', 'Omaha', 'NE'), 
+('2026-04-18', 40, 80.00, -40.00, 120.00, 'f', '1978-02-12', '2026-04-10', 'Tulsa', 'OK'),
+('2026-05-22', 41, 140.00, 70.00, 70.00, 'm', '1998-09-22', '2026-05-20', 'Honolulu', 'HI'), 
+('2026-06-10', 42, 100.00, -40.00, 140.00, 'm', '1970-04-28', '2026-06-05', 'Santa Ana', 'CA'), 
+('2026-07-01', 43, 75.00, 20.00, 55.00, 'f', '1985-06-15', '2026-07-01', 'Pittsburgh', 'PA'), 
+('2026-08-14', 44, 110.00, -30.00, 140.00, 'm', '2010-03-14', '2026-08-10', 'Lexington', 'KY'), 
+('2026-09-05', 45, 160.00, 80.00, 80.00, 'f', '1995-10-05', '2026-09-01', 'Anchorage', 'AK'), 
+('2026-10-12', 46, 125.00, -55.00, 180.00, 'm', '1957-12-30', '2026-10-10', 'Stockton', 'CA'), 
+('2026-11-19', 47, 85.00, 30.00, 55.00, 'm', '1973-05-20', '2026-11-15', 'Cincinnati', 'OH'),
+('2026-12-02', 48, 110.00, -40.00, 150.00, 'm', '2012-08-02', '2026-12-01', 'Saint Paul', 'MN'), 
+('2027-01-08', 49, 120.00, 60.00, 60.00, 'f', '1994-02-08', '2027-01-05', 'St. Louis', 'MO'), 
+('2027-02-15', 50, 70.00, -25.00, 95.00, 'm', '1962-11-12', '2027-02-10', 'Henderson', 'NV'), 
+('2027-03-25', 51, 90.00, 30.00, 60.00, 'm', '2000-03-25', '2027-03-20', 'Hialeah', 'FL'), 
+('2027-04-11', 52, 80.00, -40.00, 120.00, 'f', '1982-08-18', '2027-04-10', 'Newark', 'NJ'), 
+('2027-05-07', 53, 95.00, 40.00, 55.00, 'm', '1977-06-15', '2027-05-05', 'Durham', 'NC'), 
+('2027-06-20', 54, 105.00, -30.00, 135.00, 'f', '1999-09-20', '2027-06-15', 'Chula Vista', 'CA'), 
+('2027-07-15', 55, 155.00, 80.00, 75.00, 'm', '1971-12-25', '2027-07-10', 'Toledo', 'OH'), 
+('2027-08-28', 56, 135.00, -45.00, 180.00, 'm', '2003-05-28', '2027-08-25', 'Oakland', 'CA'), 
+('2027-09-11', 57, 70.00, 20.00, 50.00, 'f', '1991-02-11', '2027-09-05', 'Richmond', 'VA'),
+('2027-10-24', 58, 80.00, -35.00, 115.00, 'm', '1960-10-10', '2027-10-18', 'Baton Rouge', 'LA'), 
+('2027-11-19', 59, 95.00, 40.00, 55.00, 'm', '2007-03-19', '2027-11-15', 'Laredo', 'TX'), 
+('2027-12-30', 60, 110.00, -40.00, 150.00, 'f', '1992-08-30', '2027-12-28', 'Modesto', 'CA'); 
+
+
+--Visualizando a tabela "apostas"
+
+SELECT * FROM apostas;
+
+--Criando a tabela "resultado" a partir da tabela apostas
+
+CREATE TABLE resultado AS
+SELECT Clientes_id, Data_acesso, Buyin, Winning, Rake
+FROM apostas;
+
+--Visualizando a tabela "resultado"
+
+SELECT * FROM resultado;
+
+--Criando a tabela "clientes" a partir da tabela apostas
+
+CREATE TABLE clientes AS
+SELECT Clientes_id AS Id, Sexo, Data_nascimento, Data_cadastro, Cidade, Sigla
+FROM apostas;
+
+--Visualizando a tabela "clientes"
+
+SELECT * FROM clientes;
+
+------------------Respondendo as perguntas:------------------
+
+
+--a) Quanto de rake foi gerado por cada Geração de jogadores?
+
+
+ALTER TABLE clientes
+ADD COLUMN Geracao VARCHAR(20); --adicionando uma nova variável chamada "Geracao" na tabela "clientes" para armazenar a geração de cada cliente com base em sua data de nascimento.
+
+UPDATE clientes --atualizando a coluna "Geracao" na tabela "clientes" de acordo com cada caso
+SET Geracao = CASE
+    WHEN data_nascimento BETWEEN '1925-01-01' AND '1940-12-31' THEN 'Veteranos' --quando a data de nascimento for entre 01/01/1925 e 31/12/1940, o cliente é classificado como "Veteranos"
+    WHEN data_nascimento BETWEEN '1941-01-01' AND '1959-12-31' THEN 'Baby Boomers' --quando a data de nascimento for entre 01/01/1941 e 31/12/1059, o cliente é classificado como "Baby Boomers"
+    WHEN data_nascimento BETWEEN '1960-01-01' AND '1979-12-31' THEN 'Geracao X' --quando a data de nascimento for entre 01/01/1960 e 31/12/1979, o cliente é classificado como "Geracao X"
+    WHEN data_nascimento BETWEEN '1980-01-01' AND '1995-12-31' THEN 'Geracao Y' --quando a data de nascimento for entre 01/01/1980 e 31/12/1995, o cliente é classificado como "Geracao Y"
+    WHEN data_nascimento BETWEEN '1996-01-01' AND '2010-12-31' THEN 'Geracao Z' --quando a data de nascimento for entre 01/01/1996 e 31/12/2010, o cliente é classificado como "Geracao Z"
+    WHEN data_nascimento >= '2011-01-01' THEN 'Geracao Alpha' --quando a data de nascimento maior que 01/01/2011, o cliente é classificado como "Geração Alpha"
+    ELSE 'Desconhecida' -- Para datas fora desses intervalos
+END;
+
+--respondendo a pergunta:
+
+SELECT c.Geracao, SUM(r.Rake) AS RakeTotal --somando a coluna "Rake" da tabela "clientes" por cada "Geracao" da tabela "resultado"
+FROM clientes c
+JOIN resultado r ON c.Id = r.Clientes_id -- unindo as tabelas "clientes" e "resultado" através da chave ID
+GROUP BY c.Geracao;
+
+
+--b) Qual foi o Rake gerado por mês?
+
+
+SELECT
+    strftime('%Y-%m', Data_acesso) AS Mês, --extraindo o ano e o mês da coluna "Data_acesso" da tabela "resultado" no formato "AAAA-MM"
+    SUM(Rake) AS RakeTotal -- somando a coluna "Rake" agrupada por mês
+FROM resultado
+GROUP BY Mês
+ORDER BY Mês; --Ordenando os meses em ordem crescente
+
+
+--c) Qual sexo tem uma maior proporção de Ganhadores?
+
+
+ALTER TABLE resultado
+ADD COLUMN Ganhador VARCHAR(20); --adicionando uma nova variável chamada "Ganhador" na tabela "resultado" para armazenar o status de vitória de cada cliente com base em na coluna "Winning"
+
+UPDATE resultado
+SET Ganhador = CASE --Inserindo o status de vitória de cada cliente na coluna "Ganhador" contida na tabela "resultado" conforme critério
+    WHEN Winning > 0 THEN 'Sim' --Sim, quando Winning maior que 0
+    ELSE 'Não' --Não, caso contrário
+END;
+
+--Respondendo a pergunta:
+
+SELECT
+    c.Sexo,
+    COUNT(DISTINCT r.Clientes_id) AS TotalClientes, --Contando o número total de clientes de cada sexo, e renomeie como "TotalClientes" 
+    COUNT(DISTINCT CASE WHEN r.Winning > 0 THEN r.Clientes_id END) AS Ganhadores, --Contando o número de Ganhadores (Winning > 0) de cada sexo
+    ROUND((COUNT(DISTINCT CASE WHEN r.Winning > 0 THEN r.Clientes_id END) * 1.0) / COUNT(DISTINCT r.Clientes_id),2) AS ProporçãoGanhadores -- Calculando a proporção de Ganhadores dividindo o número de Ganhadores pelo número total de clientes e arrendondando duas casas decimais
+FROM clientes c
+JOIN resultado r ON c.Id = r.Clientes_id
+GROUP BY c.Sexo
+ORDER BY ProporçãoGanhadores DESC; --Ordenando os resultados em ordem decrescente com base na proporção de Ganhadores
