@@ -105,7 +105,6 @@ FROM apostas;
 
 SELECT * FROM clientes;
 
-
 ------------------Respondendo as perguntas:------------------
 
 
